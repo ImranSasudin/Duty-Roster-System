@@ -103,11 +103,11 @@
 									
 									<!-- START OF FORM -->
 									
-										<form name="form1" method="get" id="ff" action="loginAdminController">
+										<form action="StaffController" name="form1" method="post" id="ff" >
 											<label class="row">
 												<div class="col-1-2">
 													<div class="wrap-col">
-														<input type="text" name="id" id="id" placeholder="Enter Id" required="required" />
+														<input type="text" name="id" id="id" placeholder="Enter ID" required="required" />
 													</div>
 												</div>
 											</label>
