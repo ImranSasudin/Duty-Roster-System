@@ -103,7 +103,7 @@
 									
 									<!-- START OF FORM -->
 									
-										<form name="form1" method="post" id="ff" action="MemberController">
+										<form name="form1" method="get" id="ff" action="loginController">
 											<label class="row">
 												<div class="col-1-2">
 													<div class="wrap-col">
@@ -121,7 +121,7 @@
 											</label>
 											<label class="row">
 												<div class="wrap-col">
-													<button class="sendButton" type="submit" name="action" value="Login">Submit</button>    
+													<button type="submit" value="submit" class="btn btn-primary btn-block">Login</button>   
 												</div>
 											</label>
 											<label class="row">
@@ -130,7 +130,7 @@
 												</div>
 												
 												</label>
-											<br/><a href="register.jsp">Register New User Here</a><br/>
+											<br/><a href="register1.jsp">Register New User Here</a><br/>
 										</form>
 											
 										

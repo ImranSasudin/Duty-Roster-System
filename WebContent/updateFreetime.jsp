@@ -1,19 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="kkdrs.userBean" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Komander Login</title>
+<title>Update Free Time</title>
 </head>
 <body>
 
-
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
 
     <!-- Basic Page Needs
   ================================================== -->
@@ -97,54 +92,50 @@
 							<div class="wrap-col">
 								<div class="contact">
 									<div class="contact-header">
-										<h5>LOGIN KOMANDER ACCOUNT</h5>
+										<h5>KOMANDER FREE TIME</h5>
 									</div>
 									<div id="contact_form">
 									
 									<!-- START OF FORM -->
 									
-										<form name="form1" method="post" id="ff" action="MemberController">
+									<form name="form1" method="post" id="ff" action="freetimeServlet">
 											<label class="row">
 												<div class="col-1-2">
 													<div class="wrap-col">
-														<input type="text" name="id" id="id" placeholder="Enter Student Id" required="required" />
-													</div>
-												</div>
-											</label>
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="password" name="password" id="password" placeholder="Enter Your Password" required="required" />
+														<input type="text" name="name" id="name" placeholder="Enter Your Name " required="required" />
 													</div>
 											
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<button class="sendButton" type="submit" name="action" value="Login">Submit</button>    
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<input class="sendButton" type="reset" name="submitcontact" value="Reset">	    
-												</div>
-												
-												</label>
-											<br/><a href="register.jsp">Register New User Here</a><br/>
-										</form>
 											
-										
+<BODY bgcolor="white">
+
+<font size=10 color="black">
+CHECK ALL YOUR FREE TIME: 
+
+ 						<div class="three_quarter first">	
+					              
+					            	<input type="checkboxone" class="disable" onclick="check();" name="Free Time" value="monday" id="day">Monday
+									<input type="checkboxtwo" class="disable" onclick="check();" name="Free Time" value="tuesday" id="day">Tuesday
+									<input type="checkboxthree" class="disable" onclick="check();" name="Free Time" value="wednesday" id="day">Wednesday
+									<input type="checkboxfour" class="disable" onclick="check();" name="Free Time" value="thursday" id="day">Thursday
+									<input type="checkboxfive" class="disable" onclick="check();" name="Free Time" value="friday" id="day">Friday
+							</div>
+
+  
+</label>  
+<label class="row">
+<div class="wrap-col">
+<input class="sendButton" type="submit" name="submitcontact" value="Update">	    
+</div>
+</label>
+<label class="row">
+<div class="wrap-col">
+<input class="sendButton" type="reset" name="submitcontact" value="Cancel">	    
+</div>
+</label>
+									
 										<!-- END OF FORM -->
 										
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
+								
+		
 </body>
-</html>
+</html>	

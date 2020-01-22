@@ -1,14 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page import="dutyRoster.model.userBean" %>
+<%
+	response.setDateHeader ("Expires", 4);
+	System.out.println(session.getAttribute("currentUserID"));
+	String name = (String)session.getAttribute("currentSessionUser");
+	String id = (String)session.getAttribute("currentUserID");
+	if(session.getAttribute("currentUserID")==null){
+	    response.sendRedirect("/DutyRosterSystem/login1.jsp");
+	}
+	else{
+		   id = (String)session.getAttribute("currentUserID");
+		  System.out.println(id);
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Komander Login</title>
+<title>Update Komander Information</title>
 </head>
 <body>
 
-
+	<!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -97,42 +114,74 @@
 							<div class="wrap-col">
 								<div class="contact">
 									<div class="contact-header">
-										<h5>LOGIN KOMANDER ACCOUNT</h5>
+										<h5>UPDATE KOMANDER ACCOUNT</h5>
 									</div>
 									<div id="contact_form">
 									
 									<!-- START OF FORM -->
 									
-										<form name="form1" method="post" id="ff" action="MemberController">
+										<form name="form1" method="post" id="ff" action="userController">
 											<label class="row">
 												<div class="col-1-2">
 													<div class="wrap-col">
-														<input type="text" name="id" id="id" placeholder="Enter Student Id" required="required" />
+														<input required type="text" name="id" id="id" value="<c:out value="${user.id}"/>" >
 													</div>
 												</div>
 											</label>
 											<label class="row">
 												<div class="col-1-2">
 													<div class="wrap-col">
-														<input type="password" name="password" id="password" placeholder="Enter Your Password" required="required" />
+														<input type="text" name="name" id="name"  required value="<c:out value="${user.name}"/>" >
 													</div>
+												</div>
+											</label>
+											<label class="row">
+												<div class="col-1-2">
+													<div class="wrap-col">
+														<input type="text" name="address" id="address" required="required" value="<c:out value="${user.address}"/>"/>" >
+													</div>
+													 
+												</div>
+											</label>
+											<label class="row">
+												<div class="col-1-2">
+													<div class="wrap-col">
+														<input type="text" name="phone" id="phone" value="<c:out value="${user.phone}"/>" >
+													</div>
+													  
+														</div>
+											</label>
+											<label class="row">
+												<div class="col-1-2">
+													<div class="wrap-col">
+														<input type="text" name="position" id="position" value="<c:out value="${user.position}"/>" >
+													</div>
+												</div>
+											</label>
+											<label class="row">
+												<div class="col-1-2">
+													<div class="wrap-col">
+														<input type="text" name="cgpa" id="cgpa" value="<c:out value="${user.cgpa}"/>" >
+													</div>
+													  
+												</div>
+											</label>
+											<label class="row">
+												<div class="col-1-2">
+													<div class="wrap-col">
+														<input type="password" name="password" id="password" value="<c:out value="${user.password}"/>" >
+													</div>
+													  
+												</div>
+											</label>
+											<label class="row">
+												<div class="wrap-col">
+													<input class="sendButton" type="submit" name="submit" value="Update">	    
+												</div>
+											</label>
+								
 											
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<button class="sendButton" type="submit" name="action" value="Login">Submit</button>    
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<input class="sendButton" type="reset" name="submitcontact" value="Reset">	    
-												</div>
-												
-												</label>
-											<br/><a href="register.jsp">Register New User Here</a><br/>
 										</form>
-											
 										
 										<!-- END OF FORM -->
 										
@@ -145,6 +194,8 @@
 			</div>
 		</div>
 	</div>
-
+	</div>
+	</section>
+<%} %>
 </body>
 </html>

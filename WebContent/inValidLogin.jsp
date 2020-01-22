@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Komander Login</title>
+<title>Komander Invalid Login</title>
 </head>
 <body>
 
-
+	<!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -87,64 +87,54 @@
 </div>
 
 <!--////////////////////////////////////Container-->
-<section id="container">
-	<div class="zerogrid">
-		<div class="wrap-container clearfix">
-			<div id="main-content">
-				<div class="wrap-box"><!--Start Box-->
-					<div class="row">
-						<div class="col-2-3">
-							<div class="wrap-col">
-								<div class="contact">
-									<div class="contact-header">
-										<h5>LOGIN KOMANDER ACCOUNT</h5>
+<section id="container" class="home-page">
+	<div class="wrap-container clearfix">
+		<div id="main-content">
+			<section><!--Start Box-->
+				<div class="wrap-box">
+					<div class="zerogrid">
+						<div class="row">
+							<div class="col-2-3">
+								<div class="wrap-col">
+									<div>
+										<p>You are either not a registered user 
+            							<br/><br/>	OR <br/><br/>
+            							<br/>You entered wrong user id OR password.</p>
+            							<br/><a href="login.jsp">Login Here</a>
+            							<br/><a href="register.jsp">Register Here</a>
 									</div>
-									<div id="contact_form">
-									
-									<!-- START OF FORM -->
-									
-										<form name="form1" method="post" id="ff" action="MemberController">
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="id" id="id" placeholder="Enter Student Id" required="required" />
-													</div>
-												</div>
-											</label>
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="password" name="password" id="password" placeholder="Enter Your Password" required="required" />
-													</div>
-											
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<button class="sendButton" type="submit" name="action" value="Login">Submit</button>    
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<input class="sendButton" type="reset" name="submitcontact" value="Reset">	    
-												</div>
-												
-												</label>
-											<br/><a href="register.jsp">Register New User Here</a><br/>
-										</form>
-											
-										
-										<!-- END OF FORM -->
-										
+								</div>
+							</div>
+							<div class="col-1-3">
+								<div class="wrap-col">
+									<div class="sub-title">
+										<h2></h2>
 									</div>
+									
+								</div>
+							</div>
+							<div class="col-1-3">
+								<div class="wrap-col">
+									<div class="sub-title">
+										<h2></h2>
+									</div>
+									
+								
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</section>
+			
 		</div>
 	</div>
+</section>
+
+</div>
+</body></html>
+
+
 
 </body>
 </html>

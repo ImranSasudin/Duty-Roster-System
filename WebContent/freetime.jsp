@@ -1,19 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="dutyRoster.model.userBean" %>
+<%userBean currentUser = (userBean) session.getAttribute("currentSessionUser");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Komander Login</title>
+<title>Komander Free Time</title>
 </head>
 <body>
 
-
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
 
     <!-- Basic Page Needs
   ================================================== -->
@@ -94,57 +90,68 @@
 				<div class="wrap-box"><!--Start Box-->
 					<div class="row">
 						<div class="col-2-3">
-							<div class="wrap-col">
-								<div class="contact">
-									<div class="contact-header">
-										<h5>LOGIN KOMANDER ACCOUNT</h5>
-									</div>
-									<div id="contact_form">
+						<table>
+							<tr>
+	                        <th>DATE</th>
+	                        <th>STATUS</th>
+                        	</tr>
+                        	<c:forEach items="${frees}" var="free">
+                        	<tr>
+                        		<td><c:out value="${free.freeDate}"/></td>
+                        		<td><c:out value="${free.status}"/></td>
+                        	</tr>
+                        	</c:forEach>
+						</table>
+						<div class="wrap-col">
+					    	<div class="contact">
+								<div class="contact-header">
+								<h5>KOMANDER FREE TIME</h5>
+								</div>
+								
+								<div >
 									
 									<!-- START OF FORM -->
 									
-										<form name="form1" method="post" id="ff" action="MemberController">
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="id" id="id" placeholder="Enter Student Id" required="required" />
-													</div>
-												</div>
-											</label>
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="password" name="password" id="password" placeholder="Enter Your Password" required="required" />
-													</div>
+										<form name="form1" method="post" id="ff" action="registerServlet">
 											
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<button class="sendButton" type="submit" name="action" value="Login">Submit</button>    
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<input class="sendButton" type="reset" name="submitcontact" value="Reset">	    
-												</div>
+												ID: <input type="text" name="id" id="id" value="<c:out value="${user.id }"/>" >
 												
-												</label>
-											<br/><a href="register.jsp">Register New User Here</a><br/>
-										</form>
+												NAME:<input type="text" id="name" name="name" value="<c:out value="${user.name}"/>">
+												
+												Date: <input type="date" name="freeDate" id="freeDate">
+													
+												Status free:
+													
+														<select name="status" id="status" class="form-control" required>	
+									                        <option value="Yes">Yes</option>
+									                        <option value="No">No</option>
+									                   </select>
 											
+											
+											
+										</form>
 										
 										<!-- END OF FORM -->
 										
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
+								<div id="contact_form">
+									<!-- START OF FORM -->
+									
+</label>   
+<label class="row">
+<div class="wrap-col">
+<input class="sendButton" type="submit" name="submitcontact" value="Submit">	    
+</div>
+</label>
+<label class="row">
+<div class="wrap-col">
+<input class="sendButton" type="reset" name="submitcontact" value="Reset">	    
+</div>
+</label>
+									
+										<!-- END OF FORM -->
+										
+								
+		
 </body>
-</html>
+</html>	

@@ -4,17 +4,55 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Komander Login</title>
+<title>Komander Duty Roster</title>
 </head>
 <body>
 
-
+	<!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+  border-collapse: collapse;
+  width: 100%;
+  length:100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #ffbf00;
+  color: white;
+}
+table, td, th {
+  border: 3px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  length:100%;
+}
+
+td {
+  height: 50px;
+  vertical-align: bottom;
+}
+</style>
+</head>
+<body>
     <!-- Basic Page Needs
   ================================================== -->
 	<meta charset="utf-8">
@@ -97,54 +135,39 @@
 							<div class="wrap-col">
 								<div class="contact">
 									<div class="contact-header">
-										<h5>LOGIN KOMANDER ACCOUNT</h5>
+										<h2>Komander Kesatria Duty Roster</h2>
 									</div>
 									<div id="contact_form">
-									
-									<!-- START OF FORM -->
-									
-										<form name="form1" method="post" id="ff" action="MemberController">
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="id" id="id" placeholder="Enter Student Id" required="required" />
-													</div>
-												</div>
-											</label>
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="password" name="password" id="password" placeholder="Enter Your Password" required="required" />
-													</div>
-											
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<button class="sendButton" type="submit" name="action" value="Login">Submit</button>    
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<input class="sendButton" type="reset" name="submitcontact" value="Reset">	    
-												</div>
-												
-												</label>
-											<br/><a href="register.jsp">Register New User Here</a><br/>
-										</form>
-											
-										
-										<!-- END OF FORM -->
-										
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+							
+
+<table>
+
+  <tr>
+   <th>Monday</th>
+    <td>Name</td>
+    
+  </tr>
+  <tr>
+    <th>Tuesday</th>
+    <td>Name</td>
+    
+  </tr>
+  <tr>
+    <th>Wednesday</th>
+    <td>Name</td>
+   
+  </tr>
+  <tr>
+    <th>Thursday</th>
+    <td>Name</td>
+    
+  </tr>
+  <tr>
+    <th>Friday</th>
+    <td>Name</td>
+    
+  </tr>
+</table>
 
 </body>
 </html>

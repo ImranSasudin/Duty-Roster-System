@@ -1,19 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%
+	response.setDateHeader ("Expires", 4);
+	System.out.println(session.getAttribute("currentUserID"));
+	String name = (String)session.getAttribute("currentSessionUser");
+	String id = (String)session.getAttribute("currentUserID");
+	if(session.getAttribute("currentUserID")==null){
+	    response.sendRedirect("/DutyRosterSystem/login1.jsp");
+	}
+	else{
+		   id = (String)session.getAttribute("currentUserID");
+		   name =(String)session.getAttribute("currentSessionUser");
+		  System.out.println(id);
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Komander Login</title>
+<title>Komander Free Time</title>
 </head>
 <body>
 
-
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
 
     <!-- Basic Page Needs
   ================================================== -->
@@ -72,79 +82,44 @@
 </head>
 <body>
 <div class="wrap-body">
-
-<!-- /////////////////////////////////////////Top -->
-<div class="top">
-	<div class="zerogrid">
-		<div class="row">
-			<div class="f-left">
-
-			</div>
-			<div class="f-right">
-			</div>
-		</div>
-	</div>
-</div>
-
-<!--////////////////////////////////////Container-->
 <section id="container">
 	<div class="zerogrid">
-		<div class="wrap-container clearfix">
+		<div class="wrap-container">
 			<div id="main-content">
 				<div class="wrap-box"><!--Start Box-->
 					<div class="row">
+						<div class="row">
 						<div class="col-2-3">
-							<div class="wrap-col">
-								<div class="contact">
-									<div class="contact-header">
-										<h5>LOGIN KOMANDER ACCOUNT</h5>
-									</div>
-									<div id="contact_form">
-									
-									<!-- START OF FORM -->
-									
-										<form name="form1" method="post" id="ff" action="MemberController">
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="id" id="id" placeholder="Enter Student Id" required="required" />
-													</div>
-												</div>
-											</label>
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="password" name="password" id="password" placeholder="Enter Your Password" required="required" />
-													</div>
-											
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<button class="sendButton" type="submit" name="action" value="Login">Submit</button>    
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<input class="sendButton" type="reset" name="submitcontact" value="Reset">	    
-												</div>
-												
-												</label>
-											<br/><a href="register.jsp">Register New User Here</a><br/>
-										</form>
-											
-										
-										<!-- END OF FORM -->
-										
-									</div>
-								</div>
-							</div>
+                              <div class="row">
+                              LIST OF STUDENT:
+                              <table class="table table-bordered table-hover table-striped" align="center" style="width:450px;">
+                						<tr>
+                							<th>ID</th>
+                							<th>NAME</th>
+                							<th>PHONE</th>
+                							<th>POSITION</th>
+                							<th>CGPA</th>
+                						</tr>
+                						<c:forEach items="${users}" var="user">
+                						<tr>
+                							<td><c:out value="${user.id}"/></td>
+                							<td><c:out value="${user.name}"/></td>
+                							<td><c:out value="${user.phone}"/></td>
+                							<td><c:out value="${user.position}"/></td>
+                							<td><c:out value="${user.cgpa}"/></td>
+                						</tr>
+                						</c:forEach> 	
+                              </table>
+                              </div>
 						</div>
+					</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
+</section>
+</div>	
 </body>
-</html>
+<%} %>
+</html>	
