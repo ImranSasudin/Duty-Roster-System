@@ -42,7 +42,7 @@ public class MemberController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MemberBean member = new MemberBean();
-		HttpSession session = request.getSession(true);
+		
 		
 		String action = request.getParameter("action");
 		
@@ -83,6 +83,7 @@ public class MemberController extends HttpServlet {
 			}
 			
 			if(member.isValid()) {
+				HttpSession session = request.getSession(true);
 				session.setAttribute("currentSessionUser", member.getStudentId());
 				
 				response.sendRedirect("index.jsp");

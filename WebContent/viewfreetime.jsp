@@ -1,7 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Home</title>
+  <title>Free Time</title>
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,18 +75,36 @@
       <p><a href="FreeTimeController?action=dutyRoster">Duty Roster</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome</h1>
-      <p>Majlis Perwakilan Komander Kesatria (MPPK) is a club that exist in UiTM Jasin. It is manage by Unit Co-Curriculum UiTM Jasin. MPPK will help Unit Co-Curriculum to teach students that registered Kesatria Negara.</p>
+      <h1>Free Time</h1>
       <hr>
-      <h3></h3>
-      <p></p>
-
+      <center>
+      <form action="FreeTimeController" method="post">
+     <table border="1">
+     	<tr>
+	     	<th>Day</th>
+     	</tr>
+     	<c:forEach items="${frees}" var="free">
+	     	<tr>
+		     	<td><c:out value="${free.dayName}" /></td>
+	     	</tr>
+		</c:forEach>
+     	
+     </table><br><br>
+     <a href="updateFreetime.jsp" class="btn btn-primary" name="action">Update</a>
+	</form>
+	</center>
+	
   </div>
 </div>
 
 <footer class="container-fluid text-center">
   <p>Mind Over Matter</p>
 </footer>
-
+<input type="hidden"  id="min" value="${min}">
+<script>
+if($('#min').val() == 'true'){
+	alert('Minimum 3 days');
+	}
+</script>
 </body>
 </html>

@@ -1,141 +1,120 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ page import="kkdrs.userBean" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Update Free Time</title>
-</head>
-<body>
-
-
-    <!-- Basic Page Needs
-  ================================================== -->
-	<meta charset="utf-8">
-	<title></title>
-	
-    <!-- Mobile Specific Metas
-  ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <!-- CSS
-  ================================================== -->
-  	<link rel="stylesheet" href="css/zerogrid.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/menu.css">
-	<link rel="stylesheet" href="css/responsiveslides.css">
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
-	<script src="js/jquery-latest.min.js"></script>
-	<script src="js/script.js"></script>
-    <script src="js/jquery183.min.js"></script>
-    <script src="js/responsiveslides.min.js"></script>
-    <script>
-		// You can also use "$(window).load(function() {"
-		$(function () {
-		  // Slideshow 
-		  $("#slider").responsiveSlides({
-			auto: true,
-			pager: false,
-			nav: true,
-			speed: 500,
-			namespace: "callbacks",
-			before: function () {
-			  $('.events').append("<li>before event fired.</li>");
-			},
-			after: function () {
-			  $('.events').append("<li>after event fired.</li>");
-			}
-		  });
-		});
-	</script>
-	
-	
-	<!--[if lt IE 8]>
-       <div style=' clear: both; text-align:center; position: relative;'>
-         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-        </a>
-      </div>
-    <![endif]-->
-    <!--[if lt IE 9]>
-		<script src="js/html5.js"></script>
-		<script src="js/css3-mediaqueries.js"></script>
-	<![endif]-->
-    
-</head>
-<body>
-<div class="wrap-body">
-
-<!-- /////////////////////////////////////////Top -->
-<div class="top">
-	<div class="zerogrid">
-		<div class="row">
-			<div class="f-left">
-
-			</div>
-			<div class="f-right">
-			</div>
-		</div>
-	</div>
-</div>
-
-<!--////////////////////////////////////Container-->
-<section id="container">
-	<div class="zerogrid">
-		<div class="wrap-container clearfix">
-			<div id="main-content">
-				<div class="wrap-box"><!--Start Box-->
-					<div class="row">
-						<div class="col-2-3">
-							<div class="wrap-col">
-								<div class="contact">
-									<div class="contact-header">
-										<h5>KOMANDER FREE TIME</h5>
-									</div>
-									<div id="contact_form">
-									
-									<!-- START OF FORM -->
-									
-									<form name="form1" method="post" id="ff" action="freetimeServlet">
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="name" id="name" placeholder="Enter Your Name " required="required" />
-													</div>
-											
-											
-<BODY bgcolor="white">
-
-<font size=10 color="black">
-CHECK ALL YOUR FREE TIME: 
-
- 						<div class="three_quarter first">	
-					              
-					            	<input type="checkboxone" class="disable" onclick="check();" name="Free Time" value="monday" id="day">Monday
-									<input type="checkboxtwo" class="disable" onclick="check();" name="Free Time" value="tuesday" id="day">Tuesday
-									<input type="checkboxthree" class="disable" onclick="check();" name="Free Time" value="wednesday" id="day">Wednesday
-									<input type="checkboxfour" class="disable" onclick="check();" name="Free Time" value="thursday" id="day">Thursday
-									<input type="checkboxfive" class="disable" onclick="check();" name="Free Time" value="friday" id="day">Friday
-							</div>
-
+  <title>Free Time</title>
   
-</label>  
-<label class="row">
-<div class="wrap-col">
-<input class="sendButton" type="submit" name="submitcontact" value="Update">	    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f2f2f2;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Welcome to Komander Kesatria Duty Roster System</a></li>
+
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="AccountController?action=viewAccount">My Account</a></p>
+      <p><a href="FreeTimeController?action=freeTime">Free Time</a></p>
+      <p><a href="FreeTimeController?action=dutyRoster">Duty Roster</a></p>
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Update Free Time</h1>
+      <hr>
+      <center>
+      <form action="FreeTimeController" method="post">
+     <table border="1">
+     	<tr>
+	     	<th>Day</th>
+	     	<th>Tick if available</th>
+     	</tr>
+     	<tr>
+	     	<td>Monday</td>
+	     	<td class="text-center"><input type="checkbox" name="day" value="1"/></td>
+     	</tr>
+     	<tr>
+	     	<td>Tuesday</td>
+	     	<td class="text-center"><input type="checkbox" name="day" value="2"/></td>
+     	</tr>
+     	<tr>
+	     	<td>Wednesday</td>
+	     	<td class="text-center"><input type="checkbox" name="day" value="3"/></td>
+     	</tr>
+     	<tr>
+	     	<td>Thursday</td>
+	     	<td class="text-center"><input type="checkbox" name="day" value="4"/></td>
+     	</tr>
+     	<tr>
+	     	<td>Friday</td>
+	     	<td class="text-center"><input type="checkbox" name="day" value="5"/></td>
+     	</tr>
+     </table><br><br>
+     <button class="btn btn-primary" name="action" value="UpdateFreeTime">Submit</button>
+	</form>
+	</center>
+	
+  </div>
 </div>
-</label>
-<label class="row">
-<div class="wrap-col">
-<input class="sendButton" type="reset" name="submitcontact" value="Cancel">	    
-</div>
-</label>
-									
-										<!-- END OF FORM -->
-										
-								
-		
+
+<footer class="container-fluid text-center">
+  <p>Mind Over Matter</p>
+</footer>
+<input type="hidden"  id="min" value="${min}">
+<script>
+if($('#min').val() == 'true'){
+	alert('Minimum 3 days');
+	}
+</script>
 </body>
-</html>	
+</html>
