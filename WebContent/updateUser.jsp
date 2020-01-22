@@ -1,191 +1,114 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page import="dutyRoster.model.userBean" %>
-<%userBean currentUser = (userBean) session.getAttribute("currentSessionUser");%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Update Komander Information</title>
+  <title>Free Time</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f2f2f2;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
 </head>
 <body>
 
-	<!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
 
-    <!-- Basic Page Needs
-  ================================================== -->
-	<meta charset="utf-8">
-	<title></title>
-	
-    <!-- Mobile Specific Metas
-  ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <!-- CSS
-  ================================================== -->
-  	<link rel="stylesheet" href="css/zerogrid.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/menu.css">
-	<link rel="stylesheet" href="css/responsiveslides.css">
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
-	<script src="js/jquery-latest.min.js"></script>
-	<script src="js/script.js"></script>
-    <script src="js/jquery183.min.js"></script>
-    <script src="js/responsiveslides.min.js"></script>
-    <script>
-		// You can also use "$(window).load(function() {"
-		$(function () {
-		  // Slideshow 
-		  $("#slider").responsiveSlides({
-			auto: true,
-			pager: false,
-			nav: true,
-			speed: 500,
-			namespace: "callbacks",
-			before: function () {
-			  $('.events').append("<li>before event fired.</li>");
-			},
-			after: function () {
-			  $('.events').append("<li>after event fired.</li>");
-			}
-		  });
-		});
-	</script>
-	
-	
-	<!--[if lt IE 8]>
-       <div style=' clear: both; text-align:center; position: relative;'>
-         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-        </a>
-      </div>
-    <![endif]-->
-    <!--[if lt IE 9]>
-		<script src="js/html5.js"></script>
-		<script src="js/css3-mediaqueries.js"></script>
-	<![endif]-->
-    
-</head>
-<body>
-<div class="wrap-body">
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Welcome to Komander Kesatria Duty Roster System</a></li>
 
-<!-- /////////////////////////////////////////Top -->
-<div class="top">
-	<div class="zerogrid">
-		<div class="row">
-			<div class="f-left">
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="MemberController?action=viewAccount">My Account</a></p>
+      <p><a href="FreeTimeController?action=freeTime">Free Time</a></p>
+      <p><a href="FreeTimeController?action=dutyRoster">Duty Roster</a></p>
+      <p><a href="MemberController?action=logout">Logout</a></p>
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Update Account</h1>
+      <hr>
+      <center>
+      <form name="form1" method="post" id="ff" action="MemberController">
+		ID : <input type="id" name="id" id="id" placeholder="Enter Student Id" value="<c:out value="${student.studentId }"/>" readonly /><br><br>
 
-			</div>
-			<div class="f-right">
-			</div>
-		</div>
-	</div>
+		Name : <input type="text" name="name" id="name" placeholder="Enter Your Name" value="<c:out value="${student.studentName }"/>" required="required" /><br><br>
+
+		Address : <input type="text" name="address" id="address" placeholder="Enter Your Adresss" value="<c:out value="${student.studentAddress }"/>" required="required" /><br><br>
+
+		Phone : <input type="text" name="phone" id="phone" placeholder="Enter Your Phone Number" value="<c:out value="${student.studentPhone }"/>" required="required"/><br><br>
+
+		Position : <input type="text" name="position" id="position" placeholder="Enter Your Position in Komander (Eg KK,RSM,ADJUTANT,KSM,MEMBER)" value="<c:out value="${student.studentPosition }"/>" required="required"/><br><br>
+
+		CGPA : <input type="text" name="cgpa" id="cgpa" placeholder="Enter Your Current CGPA" value="<c:out value="${student.studentCgpa }"/>" required="required"/><br><br>
+
+		Password : <input type="password" name="password" id="password" placeholder="Enter Your Password" required="required" value="<c:out value="${student.studentPassword }"/>" required="required"/><br><br>
+
+		<br/><button name="action" value="update">Update</button><br/>
+	</form>
+	</center>
+	
+  </div>
 </div>
-
-<!--////////////////////////////////////Container-->
-<section id="container">
-	<div class="zerogrid">
-		<div class="wrap-container clearfix">
-			<div id="main-content">
-				<div class="wrap-box"><!--Start Box-->
-					<div class="row">
-						<div class="col-2-3">
-							<div class="wrap-col">
-								<div class="contact">
-									<div class="contact-header">
-										<h5>UPDATE KOMANDER ACCOUNT</h5>
-									</div>
-									<div id="contact_form">
-									
-									<!-- START OF FORM -->
-									
-										<form name="form1" method="post" id="ff" action="registerServlet">
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="id" id="id" value="<c:out value="<%=currentUser.getId() %>"/>" required>
-													</div>
-												</div>
-											</label>
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="name" id="name"  required value="<c:out value="<%=currentUser.getName() %>"/>" >
-													</div>
-												</div>
-											</label>
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="address" id="address" required="required" value="<c:out value="<%=currentUser.getAddress() %>"/>" >
-													</div>
-													 
-												</div>
-											</label>
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="phone" id="phone" value="<c:out value="<%=currentUser.getPhone() %>"/>" >
-													</div>
-													  
-														</div>
-											</label>
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="position" id="position" value="<c:out value="<%=currentUser.getPosition() %>"/>" >
-													</div>
-												 												</div>
-											</label>
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="cgpa" id="cgpa" value="<c:out value="<%=currentUser.getCgpa() %>"/>" >
-													</div>
-													  
-												</div>
-											</label>
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="password" name="password" id="password" value="<c:out value="<%=currentUser.getPassword() %>"/>" >
-													</div>
-													  
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<input class="sendButton" type="submit" name="submit" value="Update">	    
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<input class="sendButton" type="reset" name="submit" value="Cancel">	    
-												</div>
-											</label>
-											
-										</form>
-										
-										<!-- END OF FORM -->
-										
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
+<br><br><br><br>
+<footer class="container-fluid text-center">
+  <p>Mind Over Matter</p>
+</footer>
+<input type="hidden"  id="min" value="${min}">
+<script>
+if($('#min').val() == 'true'){
+	alert('Minimum 3 days');
+	}
+</script>
 </body>
 </html>

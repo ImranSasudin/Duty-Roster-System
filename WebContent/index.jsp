@@ -65,7 +65,7 @@
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p><a href="AccountController?action=viewAccount">My Account</a></p>
+      <p><a href="MemberController?action=viewAccount">My Account</a></p>
       <p><a href="FreeTimeController?action=freeTime">Free Time</a></p>
       <p><a href="FreeTimeController?action=dutyRoster">Duty Roster</a></p>
     </div>

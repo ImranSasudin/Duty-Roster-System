@@ -5,9 +5,11 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import dutyroster.connection.ConnectionManager;
+import dutyroster.model.FreeTimeBean;
 import dutyroster.model.MemberBean;
 
 
@@ -126,5 +128,107 @@ public class AccountDAO {
 
         return bean;
     }
-	
+	public static MemberBean getUserByID(String studentId) {
+		MemberBean free = new MemberBean();
+	    try {
+	    	currentCon = ConnectionManager.getConnection();
+	        ps=currentCon.prepareStatement("select * from member where studentid=?");
+	        
+	        ps.setString(1, studentId);
+
+	        ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	        	free.setStudentId(rs.getString("studentid"));
+	        	free.setStudentName(rs.getString("studentname"));
+	        	free.setStudentAddress(rs.getString("studentaddress"));
+	        	free.setStudentPhone(rs.getString("studentphone"));
+	        	free.setStudentPosition(rs.getString("studentposition"));
+	        	free.setStudentCgpa(rs.getString("studentcgpa"));
+	        	free.setStudentPassword(rs.getString("studentpassword"));
+
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return free;
+	}
+	public static void updateAccount(MemberBean bean) throws NoSuchAlgorithmException{
+		studentId = bean.getStudentId();
+		studentName = bean.getStudentName();
+		studentPhone = bean.getStudentPhone();
+		studentAddress = bean.getStudentAddress();
+		studentPosition = bean.getStudentPosition();
+		studentCgpa = bean.getStudentCgpa();
+		studentPassword = bean.getStudentPassword();
+		
+		
+	    String searchQuery = "UPDATE member SET studentname ='" + studentName + "', studentphone ='" + studentPhone + "', studentaddress ='" + studentAddress + "', studentposition ='" + studentPosition + "', studentcgpa ='" + studentCgpa + "', studentpassword ='" + studentPassword + "' WHERE studentid = '" + studentId + "'";
+		System.out.println(searchQuery);
+		try {
+			currentCon = ConnectionManager.getConnection();
+			stat = currentCon.createStatement();
+			stat.executeUpdate(searchQuery);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public static MemberBean getUser(String studentId)  {
+    	
+		MemberBean bean = new MemberBean();
+        String searchQuery = "select * from member where studentId='" + studentId + "'";
+
+        try {
+            currentCon = ConnectionManager.getConnection();
+            stat = currentCon.createStatement();
+            rs = stat.executeQuery(searchQuery);
+            boolean more = rs.next();
+
+            // if user exists set the isValid variable to true
+            if (more) {
+           
+                bean.setValid(true);
+           	}
+           
+            else if (!more) {
+            	System.out.println("Sorry");
+            	bean.setValid(false);
+            }
+           
+        }
+
+        catch (Exception ex) {
+            System.out.println("Log In failed: An Exception has occurred! " + ex);
+        }
+
+        finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (Exception e) {
+                }
+                rs = null;
+            }
+
+            if (stat != null) {
+                try {
+                    stat.close();
+                } catch (Exception e) {
+                }
+                stat = null;
+            }
+
+            if (currentCon != null) {
+                try {
+                    currentCon.close();
+                } catch (Exception e) {
+                }
+
+                currentCon = null;
+            }
+        }
+
+        return bean;
+    }
 }

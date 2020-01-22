@@ -50,6 +50,14 @@ public class FreeTimeController extends HttpServlet {
 			}
 			
 		}
+		else if(action.equalsIgnoreCase("dutyRoster")) {
+			
+			request.setAttribute("days", FreeTimeDAO.getDutyRoster());
+			
+			RequestDispatcher view = request.getRequestDispatcher("/dutyroster.jsp");
+			view.forward(request, response);
+			
+		}
 	}
 
 	/**

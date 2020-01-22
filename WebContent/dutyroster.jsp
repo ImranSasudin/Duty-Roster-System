@@ -1,173 +1,185 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Komander Duty Roster</title>
-</head>
-<body>
-
-	<!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
-
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-
-  border-collapse: collapse;
-  width: 100%;
-  length:100%;
-}
-
-th, td {
-  text-align: left;
-  padding: 10px;
-}
-
-tr:nth-child(even){background-color: #f2f2f2}
-
-th {
-  background-color: #ffbf00;
-  color: white;
-}
-table, td, th {
-  border: 3px solid black;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
-  length:100%;
-}
-
-td {
-  height: 50px;
-  vertical-align: bottom;
-}
-</style>
+  <title>Free Time</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f2f2f2;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;} 
+    }
+  </style>
 </head>
 <body>
-    <!-- Basic Page Needs
-  ================================================== -->
-	<meta charset="utf-8">
-	<title></title>
-	
-    <!-- Mobile Specific Metas
-  ================================================== -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <!-- CSS
-  ================================================== -->
-  	<link rel="stylesheet" href="css/zerogrid.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/menu.css">
-	<link rel="stylesheet" href="css/responsiveslides.css">
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
-	<script src="js/jquery-latest.min.js"></script>
-	<script src="js/script.js"></script>
-    <script src="js/jquery183.min.js"></script>
-    <script src="js/responsiveslides.min.js"></script>
-    <script>
-		// You can also use "$(window).load(function() {"
-		$(function () {
-		  // Slideshow 
-		  $("#slider").responsiveSlides({
-			auto: true,
-			pager: false,
-			nav: true,
-			speed: 500,
-			namespace: "callbacks",
-			before: function () {
-			  $('.events').append("<li>before event fired.</li>");
-			},
-			after: function () {
-			  $('.events').append("<li>after event fired.</li>");
-			}
-		  });
-		});
-	</script>
-	
-	
-	<!--[if lt IE 8]>
-       <div style=' clear: both; text-align:center; position: relative;'>
-         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-        </a>
-      </div>
-    <![endif]-->
-    <!--[if lt IE 9]>
-		<script src="js/html5.js"></script>
-		<script src="js/css3-mediaqueries.js"></script>
-	<![endif]-->
-    
-</head>
-<body>
-<div class="wrap-body">
 
-<!-- /////////////////////////////////////////Top -->
-<div class="top">
-	<div class="zerogrid">
-		<div class="row">
-			<div class="f-left">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
 
-			</div>
-			<div class="f-right">
-			</div>
-		</div>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Welcome to Komander Kesatria Duty Roster System</a></li>
+
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="MemberController?action=viewAccount">My Account</a></p>
+      <p><a href="FreeTimeController?action=freeTime">Free Time</a></p>
+      <p><a href="FreeTimeController?action=dutyRoster">Duty Roster</a></p>
+      <p><a href="MemberController?action=logout">Logout</a></p>
+    </div>
+    <div class="col-sm-8 text-left"> 
+      <h1>Duty Roster</h1>
+      <hr>
+      <div class="row">
+      <div class="col-sm-4">
+     <table border="1">
+     	<tr>
+	     	<th>Monday</th>
+     	</tr>
+     	<c:forEach items="${days}" var="day">
+	     	<c:choose>
+	     		<c:when test="${day.dayName == 'Monday' }">
+	     			<tr>
+			     		<td><c:out value="${day.studentName}" /></td>
+		     		</tr>
+	     		</c:when>
+	     	</c:choose>
+		</c:forEach>
+     	
+     </table>
+     </div>
+     <div class="col-sm-4">
+     <table border="1">
+     	<tr>
+	     	<th>Tuesday</th>
+     	</tr>
+     	<c:forEach items="${days}" var="day">
+	     	<c:choose>
+	     		<c:when test="${day.dayName == 'Tuesday' }">
+	     			<tr>
+			     		<td><c:out value="${day.studentName}" /></td>
+		     		</tr>
+	     		</c:when>
+	     	</c:choose>
+		</c:forEach>
+     	
+     </table>
 	</div>
+     <div class="col-sm-4">
+     <table border="1">
+     	<tr>
+	     	<th>Wednesday</th>
+     	</tr>
+     	<c:forEach items="${days}" var="day">
+	     	<c:choose>
+	     		<c:when test="${day.dayName == 'Wednesday' }">
+	     			<tr>
+			     		<td><c:out value="${day.studentName}" /></td>
+		     		</tr>
+	     		</c:when>
+	     	</c:choose>
+		</c:forEach>
+     	
+     </table>
+     </div>
+     </div>
+     
+     <br><br>
+     <div class="row justify-content-around">
+     <div class="col-sm-4">
+     <table border="1">
+     	<tr>
+	     	<th>Thursday</th>
+     	</tr>
+     	<c:forEach items="${days}" var="day">
+	     	<c:choose>
+	     		<c:when test="${day.dayName == 'Thursday' }">
+	     			<tr>
+			     		<td><c:out value="${day.studentName}" /></td>
+		     		</tr>
+	     		</c:when>
+	     	</c:choose>
+		</c:forEach>
+     	
+     </table>
+	</div>
+     <div class="col-sm-4">
+     <table border="1">
+     	<tr>
+	     	<th>Friday</th>
+     	</tr>
+     	<c:forEach items="${days}" var="day">
+	     	<c:choose>
+	     		<c:when test="${day.dayName == 'Friday' }">
+	     			<tr>
+			     		<td><c:out value="${day.studentName}" /></td>
+		     		</tr>
+	     		</c:when>
+	     	</c:choose>
+		</c:forEach>
+     	
+     </table>
+     </div>
+     </div>     
+	
+  </div>
 </div>
-
-<!--////////////////////////////////////Container-->
-<section id="container">
-	<div class="zerogrid">
-		<div class="wrap-container clearfix">
-			<div id="main-content">
-				<div class="wrap-box"><!--Start Box-->
-					<div class="row">
-						<div class="col-2-3">
-							<div class="wrap-col">
-								<div class="contact">
-									<div class="contact-header">
-										<h2>Komander Kesatria Duty Roster</h2>
-									</div>
-									<div id="contact_form">
-							
-
-<table>
-
-  <tr>
-   <th>Monday</th>
-    <td>Name</td>
-    
-  </tr>
-  <tr>
-    <th>Tuesday</th>
-    <td>Name</td>
-    
-  </tr>
-  <tr>
-    <th>Wednesday</th>
-    <td>Name</td>
-   
-  </tr>
-  <tr>
-    <th>Thursday</th>
-    <td>Name</td>
-    
-  </tr>
-  <tr>
-    <th>Friday</th>
-    <td>Name</td>
-    
-  </tr>
-</table>
-
+<footer class="container-fluid text-center">
+  <p>Mind Over Matter</p>
+</footer>
+<input type="hidden"  id="min" value="${min}">
+<script>
+if($('#min').val() == 'true'){
+	alert('Minimum 3 days');
+	}
+</script>
 </body>
 </html>

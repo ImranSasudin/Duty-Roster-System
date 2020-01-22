@@ -80,6 +80,27 @@ public class FreeTimeDAO {
         return frees;
     }
 	
+	public static List<FreeTimeBean> getDutyRoster() {
+        List<FreeTimeBean> frees = new ArrayList<FreeTimeBean>();
+        
+        try {
+        	currentCon = ConnectionManager.getConnection();
+        	stat = currentCon.createStatement();
+            ResultSet rs = stat.executeQuery("select * from member m join freetime f on(m.studentid = f.studentid) join day d on(d.dayid = f.dayid) order by dayname");
+            
+            while (rs.next()) {
+            	FreeTimeBean free = new FreeTimeBean();
+                free.setStudentName(rs.getString("studentname"));
+                free.setDayName(rs.getString("dayname"));
+                frees.add(free);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return frees;
+    }
+	
 	public static void deleteFreeTime(String studentId) {
         try {
         	currentCon = ConnectionManager.getConnection();
@@ -149,4 +170,5 @@ public class FreeTimeDAO {
 
         return bean;
     }
+	
 }

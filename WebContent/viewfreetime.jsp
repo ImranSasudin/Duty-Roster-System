@@ -73,9 +73,10 @@
       <p><a href="AccountController?action=viewAccount">My Account</a></p>
       <p><a href="FreeTimeController?action=freeTime">Free Time</a></p>
       <p><a href="FreeTimeController?action=dutyRoster">Duty Roster</a></p>
+      <p><a href="MemberController?action=logout">Logout</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Free Time</h1>
+      <h1>My Free Time</h1>
       <hr>
       <center>
       <form action="FreeTimeController" method="post">
@@ -96,7 +97,6 @@
 	
   </div>
 </div>
-
 <footer class="container-fluid text-center">
   <p>Mind Over Matter</p>
 </footer>

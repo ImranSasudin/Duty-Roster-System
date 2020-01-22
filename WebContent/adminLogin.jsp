@@ -107,14 +107,7 @@
 											<label class="row">
 												<div class="col-1-2">
 													<div class="wrap-col">
-														<input type="text" name="id" id="id" placeholder="Enter Student Id" required="required" />
-													</div>
-												</div>
-											</label>
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="name" id="name" placeholder="Enter Student Id" required="required" />
+														<input type="text" name="id" id="id" placeholder="Enter Id" required="required" />
 													</div>
 												</div>
 											</label>
@@ -128,7 +121,7 @@
 											</label>
 											<label class="row">
 												<div class="wrap-col">
-													<button type="submit" value="submit" class="btn btn-primary btn-block">Login</button>   
+													<button type="submit" name="action" value="login" class="sendButton">Login</button>   
 												</div>
 											</label>
 											<label class="row">
@@ -137,7 +130,6 @@
 												</div>
 												
 												</label>
-											<br/><a href="register1.jsp">Register New User Here</a><br/>
 										</form>
 											
 										

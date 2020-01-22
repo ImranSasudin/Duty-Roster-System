@@ -131,14 +131,14 @@
 											<label class="row">
 												<div class="col-1-2">
 													<div class="wrap-col">
-														<input type="text" name="phone" id="phone" placeholder="Enter Your Phone Number"/>
+														<input type="text" name="phone" id="phone" placeholder="Enter Your Phone Number" required="required"/>
 													</div>
 														</div>
 											</label>
 											<label class="row">
 												<div class="col-1-2">
 													<div class="wrap-col">
-														<input type="text" name="position" id="position" placeholder="Enter Your Position in Komander (Eg KK,RSM,ADJUTANT,KSM,MEMBER)"/>
+														<input type="text" name="position" id="position" placeholder="Enter Your Position in Komander (Eg KK,RSM,ADJUTANT,KSM,MEMBER)" required="required"/>
 													</div>
 												
 												</div>
@@ -146,7 +146,7 @@
 											<label class="row">
 												<div class="col-1-2">
 													<div class="wrap-col">
-														<input type="text" name="cgpa" id="cgpa" placeholder="Enter Your Current CGPA"/>
+														<input type="text" name="cgpa" id="cgpa" placeholder="Enter Your Current CGPA" required="required"/>
 													</div>
 												</div>
 											</label>
